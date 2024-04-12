@@ -6,7 +6,7 @@ Avaliação da terceira sprint do programa de bolsas Compass UOL para formação
 
 ## Execução (Código Fonte)
 
-Deverá ser desenvolvida uma API, uma com **Docker**. Para esta API, utilizaremos o mesmo processo da sprint 2, mas buscando uma nova API.
+Deverá ser desenvolvida uma API com **Docker**. Para esta API, utilizaremos o mesmo processo da sprint 2, mas buscando uma nova API.
 
 Faça um sistema em JavaScript/NodeJS que produza uma interface para consulta de API pública.
 
@@ -63,4 +63,4 @@ Execução em Docker, dentro da AWS Cloud.
 - 🔨 Disponibilizar o código fonte desenvolvido (Sugestão: pasta `src`);
 - Colocar o arquivo com a configuração nginx (se utilizado).
 
-* O prazo de entrega é até às 14h do dia 22/04/2024 no repositório do github ([https://github.com/Compass-pb-aws-2024-MARCO/sprint-3-pb-aws-marco](https://github.com/Compass-pb-aws-2024-MARCO/sprint-3-pb-aws-marco)).
+* O prazo de entrega é até às 09h do dia 22/04/2024 no repositório do github ([https://github.com/Compass-pb-aws-2024-MARCO/sprint-3-pb-aws-marco](https://github.com/Compass-pb-aws-2024-MARCO/sprint-3-pb-aws-marco)).
