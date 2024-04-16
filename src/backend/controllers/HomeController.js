@@ -13,9 +13,10 @@ async function pictureDay(req, res) {
     // Mapeamento dos resultados obtidos para instâncias do modelo SearchTitles,
     // permitindo uma manipulação de dados estruturada e consistente.
     try {
-        const results = await pictureDayService.returnPictureDay();
-        console.log(results)
-        return res.render('homepage', {picture: picture}); // Alteração aqui para renderizar a página handlebar
+        const results = await pictureDayService.returnPictureDay( req.query.start_date, req.query.end_date, req.query.count, req.query.thumbs);
+        // Retornand o objeto com os dados da busca para a aplicação Frontend
+
+        return res.json(results);
         }
 
     // Em caso de falha na busca, envia uma resposta com status 500 (Internal Server Error) e a mensagem de erro.
