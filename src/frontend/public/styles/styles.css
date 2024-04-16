@@ -1,1 +1,27 @@
 /* Arquivo de estilos estáticos do frontend */
+
+.form-container {
+    max-width: 100%;
+    margin: auto;
+}
+.form-group label {
+    font-weight: bold;
+}
+.form-group input {
+    width: 100%;
+}
+.form-container button {
+    margin-top: 2rem;
+   background-color: rgb(33, 35, 156);
+    color: white;
+    padding: 0.5rem 1rem;
+}
+
+.form-container button:hover {
+    background-color:  rgb(33, 70, 156);
+    color: white;
+}
+
+#results {
+    margin-top: 2rem;
+}
