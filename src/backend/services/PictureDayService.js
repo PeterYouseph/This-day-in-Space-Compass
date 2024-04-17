@@ -4,18 +4,18 @@
 
 const axios = require('axios');
 
-async function returnPictureDay(start_date, end_date, count, thumbs) {
+async function returnPictureDay(date, start_date, end_date, count) {
     // URL base da API da NASA
     let url = `https://api.nasa.gov/planetary/apod?`;
     const api_key = process.env.APOD_API_KEY; // Chave da API da NASA que deve ser definida no arquivo .env
     
     // Adicionando parâmetros à URL de acordo com a ordem especificada na documentação da API
+    if (date != undefined) url += `date=${date}&`;
     if (start_date != undefined) url += `start_date=${start_date}&`;
     if (end_date != undefined) url += `end_date=${end_date}&`;
     if (count != undefined) url += `count=${count}&`;
-    if (thumbs != undefined) url += `thumbs=${thumbs}&`;
     if (api_key) url += `api_key=${api_key}`;
-
+    
     try {
         // Realizando a requisição GET com a URL de acordo com os parâmetros adicionados
         const response = await axios.get(url);
