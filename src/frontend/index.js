@@ -21,21 +21,27 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./public'));
 
 // Rota para renderizar a página inicial com os dados recebidos do backend (Teste em desenvolvimento)
+
+// Altere a rota para pegar os parâmetros enviados pelo frontend
 app.get('/', async (req, res) => {
-    // try {
-    //     // Fazendo uma requisição GET para a rota do backend
-    //     const response = await axios.get('http://localhost:3000/');
+    try {
+        // Pegue os parâmetros da query
+        const { date, start_date, end_date, count } = req.query;
 
-    //     // Renderizando a página inicial com os dados recebidos do backend
-    //     res.render('homepage', { data: response.data });
-    // } catch (error) {
-    //     console.error('Erro ao buscar dados do backend:', error);
-    //     res.status(500).send('Erro ao buscar dados do backend');
-    // }
+        // Faça a requisição ao backend com os parâmetros
+        const response = await axios.get('http://localhost:3000/', {
+            params: { date, start_date, end_date, count }
+        });
 
-    // Renderizando a página inicial sem os dados recebidos do backend
-    res.render('homepage');
+        // Renderize a página inicial com os dados recebidos do backend
+        res.render('homepage', { data: response.data });
+        console.log(response.data);
+    } catch (error) {
+        console.error('Erro ao buscar dados do backend:', error);
+        res.status(500).send('Erro ao buscar dados do backend');
+    }
 });
+
 
 // Inicialização do servidor na porta 3001 e Backend na porta 3000
 const PORT = 3001;
