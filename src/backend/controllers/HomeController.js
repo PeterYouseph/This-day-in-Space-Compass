@@ -13,8 +13,16 @@ async function pictureDay(req, res) {
         const results = await pictureDayService.returnPictureDay(req.query.date, req.query.start_date, req.query.end_date, req.query.count);
         // Retornand o objeto com os dados da busca para a aplicação Frontend
 
-        return res.json(results);
+        // Verificando se o retorno da requisição é um vetor de objetos ou um objeto apenas e convertendo para um vetor de objetos
+
+        if (Array.isArray(results)) {
+            // Se o retorno é um vetor de objetos, converte-o para um e retorna-o.
+            return res.json(results);
+        } else {
+            // Se o retorno não é um vetor de objetos, converte-o para um e retorna-o.
+            return res.json([results]);
         }
+      }
 
     // Em caso de falha na busca, envia uma resposta com status 500 (Internal Server Error) e a mensagem de erro.
     catch (error) {
