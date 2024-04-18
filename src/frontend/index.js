@@ -3,7 +3,7 @@
 // Importação de módulos necessários
 const express = require('express');
 const exphbs = require('express-handlebars');  // Importando o handlebars para controle de layout das páginas
-const axios = require('axios'); // Importação do axios para fazer requisições HTTP
+const apiService = require('./services/APIService'); // Importação do serviço de API para consumir dados do Backend
 
 // Inicialização do aplicativo Express
 const app = express();
@@ -25,17 +25,17 @@ app.use(express.static('./public'));
 // Altere a rota para pegar os parâmetros enviados pelo frontend
 app.get('/', async (req, res) => {
     try {
-        // Pegue os parâmetros da query
         const { date, start_date, end_date, count } = req.query;
 
-        // Faça a requisição ao backend com os parâmetros
-        const response = await axios.get('http://localhost:3000/', {
-            params: { date, start_date, end_date, count }
-        });
+        // Verifica se há parâmetros na query antes de fazer a requisição ao backend
+        let responseData;
+        if (date || start_date || end_date || count) {
+            responseData = await apiService.fetchDataFromBackend({ date, start_date, end_date, count });
+        } else {
+            responseData = null; // Define como null se não houver parâmetros na query
+        }
 
-        // Renderize a página inicial com os dados recebidos do backend
-        res.render('homepage', { data: response.data });
-        console.log(response.data);
+        res.render('homepage', { data: responseData });
     } catch (error) {
         console.error('Erro ao buscar dados do backend:', error);
         res.status(500).send('Erro ao buscar dados do backend');
