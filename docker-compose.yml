@@ -1,0 +1,26 @@
+version: "1"
+
+services:
+ 
+  backend:
+    build: 
+      context: src/backend
+      dockerfile: Dockerfile.backend
+    container_name: backend
+    ports:
+      - "3000:3000"
+    networks:
+      - my-localhost
+
+  frontend:
+    build: 
+      context: src/frontend
+      dockerfile: Dockerfile.frontend
+    container_name: frontend
+    ports:
+      - "3001:3001"
+    networks:
+      - my-localhost
+
+networks:
+  my-localhost:
