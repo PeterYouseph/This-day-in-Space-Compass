@@ -38,9 +38,12 @@ app.get('/', async (req, res) => {
         res.render('homepage', { data: responseData });
     } catch (error) {
         console.error('Erro ao buscar dados do backend:', error);
-        res.status(500).send('Erro ao buscar dados do backend');
+        // Em caso de erro na requisição ao backend, envia uma resposta de erro com status 500 (Internal Server Error) e renderiza a página sem dados recebidos
+        res.render('homepage', { data: null });
     }
 });
+
+
 
 
 // Inicialização do servidor na porta 3001 e Backend na porta 3000
