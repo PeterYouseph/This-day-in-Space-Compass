@@ -22,6 +22,33 @@
     color: white;
 }
 
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    color: white;   
+}
+
+.footer p { 
+    color: white;
+}
+
+.footer a {
+    color: white;
+    font-weight: bold;
+}
+
+
+
+.main-content {
+    margin-bottom: 2rem;
+}
+
 #results {
     margin-top: 2rem;
+    box-shadow: 0 4px 8px 0 rgba(95, 95, 95, 0.048), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 1rem;
 }
