@@ -11,6 +11,9 @@ services:
       - "3000:3000"
     networks:
       - my-localhost
+    environment:
+      - NODE_ENV=production
+      - APOD_API_KEY=${APOD_API_KEY}  # Variável de ambiente específica do backend
 
   frontend:
     build: 
