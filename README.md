@@ -1,4 +1,4 @@
-# Desenvolvimento da aplicação *'This day in Space'*
+# Desenvolvimento da aplicação [*'This day in Space'*](http://44.201.85.78:3001/)
 
 ## 👨‍💻👩‍💻 Projeto desenvolvido por: [José Pedro Cândido L.P.](https://github.com/PeterYouseph), [Michael Lee Alves](https://github.com/AlvesMichael23), [Rafael Torres Nantes](https://github.com/rafael-torres-nantes) e [Sarah Baraldi](https://github.com/mbaraldi-sarah).
 
@@ -62,6 +62,7 @@ A API APOD é uma API RESTful que fornece informações sobre eventos espaciais,
 [<img src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white">](https://www.docker.com/)
 [<img src="https://img.shields.io/badge/AWS-232F3E?logo=amazon-aws&logoColor=white">](https://aws.amazon.com/pt/)
 [<img src="https://img.shields.io/badge/AWS-CLI-232F3E?logo=amazon-aws&logoColor=white">](https://aws.amazon.com/pt/cli/)
+[<img src="https://img.shields.io/badge/aws_ec2-232F3E?logo=amazon-aws&logoColor=white">](https://aws.amazon.com/pt/ec2/)
 
 ##### API utilizada:
 
@@ -115,7 +116,38 @@ A API APOD é uma API RESTful que fornece informações sobre eventos espaciais,
 ## 📎 Diagrama de atividades da aplicação
 ### Fluxo de funcionamento e consumo da API 
 
-- To do!
+- O diagrama de atividades abaixo representa o fluxo de funcionamento da aplicação, desde a conexão do usuário com a aplicação hospedada no AWS EC2, até a exibição das informações sobre eventos espaciais na tela do usuário.
+
+```bash
+   +------------------------+             +--------------------------+
+   |                        |             |                          |
+   |       Usuário          |             |    Máquina EC2 da AWS    |
+   |                        |             |                          |
+   +------------------------+             +--------------------------+
+        - Acessa a aplicação                - Recebe a requisição
+            |                                           |
+                |   +----------------------------+  |
+                    |   Acessa o IPv4 público    |
+                    +---------------------------->
+                    |                            |
+                    |                            |
+                    |   Exibe a interface do     |
+                    |   Frontend                 |
+                    |<---------------------------+
+                    |                            |
+                    |                            |
+                    |   Interage com a interface |
+                    +--------------------------->|
+                    |                            |
+                    |   Frontend consome dados   |
+                    |   do Backend               |
+                    +--------------------------->|
+                    |                            |
+                    |   Backend consome dados    |
+                    |   da API da NASA           |
+                    +--------------------------->|
+                    |                            |
+```
 
 
 ## 📌 Como executar o projeto
@@ -158,6 +190,12 @@ $ docker-compose up
 
 #### 3. Acesse o projeto no navegador:
 
+##### Acesso da aplicação via IP público do ***AWS EC2***
+
+- A aplicação foi hospedada no ***AWS EC2*** e está disponível para acesso via IP público. Para acessar a aplicação, basta acessar o endereço [`This Day in Space`](http://44.201.85.78:3001/) no navegador.
+
+##### Acesso através do localhost (caso deseje executar o projeto localmente)
+
 - Após a execução do comando `docker-compose up`, a aplicação Backend estará disponível no endereço `http://localhost:3000/` e a aplicação Frontend estará disponível no endereço `http://localhost:3001/`.
 
 ## 🤯 Dificuldades encontradas 
@@ -170,7 +208,7 @@ $ docker-compose up
 
 #### Configuração do ambiente de produção no AWS com Docker
 
-- O deploy da aplicação no AWS foi um dos maiores desafios enfrentados pelo time devido a inexperiência de todos, pois a configuração do ambiente de produção, a configuração do Docker e a configuração do AWS CLI foram tarefas complexas e que demandaram um tempo considerável para serem realizadas.
+- O deploy da aplicação no AWS foi um dos maiores desafios enfrentados pelo time devido a inexperiência de todos, pois a configuração do ambiente de produção, a configuração do Docker e a configuração do AWS CLI e EC2 foram tarefas complexas e que demandaram um tempo considerável para serem realizadas.
 
 ### Dificuldades de organização
 
